@@ -17,15 +17,16 @@ window.SwaggerTranslator = {
 
     _words:[],
 
-    translate: function(sel) {
+    translate: function(sel) {      
       var $this = this;
-      sel = sel || '[data-sw-translate]';
+      sel = sel || '[data-sw-translate]';      
 
-      $(sel).each(function() {
+      $(sel).each(function() {                
         $(this).html($this._tryTranslate($(this).html()));
 
         $(this).val($this._tryTranslate($(this).val()));
         $(this).attr('title', $this._tryTranslate($(this).attr('title')));
+
       });
     },
 

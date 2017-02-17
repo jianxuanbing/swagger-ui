@@ -10,11 +10,16 @@ window.SwaggerUi = Backbone.Router.extend({
   api: null,
   headerView: null,
   mainView: null,
+  currentLocale:locales.zh_CN,
 
   // SwaggerUi accepts all the same options as SwaggerApi
   initialize: function(options) {
     options = options || {};
 
+    //扩展，设置当前字符集
+    if(options.locale){
+      this.setLocale(options.locale);
+    }
     if (options.defaultModelRendering !== 'model') {
       options.defaultModelRendering = 'schema';
     }
@@ -76,8 +81,15 @@ window.SwaggerUi = Backbone.Router.extend({
         expand: 'expand'
         },
       icon_prefix: 'swagger-'
-      });
+    });    
 
+  },
+  //扩展，设置语言
+  setLocale:function(locale){
+    this.currentLocale=locales[locale];    
+    if(window.SwaggerTranslator.learn){
+      window.SwaggerTranslator.learn(this.currentLocale);
+    }
   },
 
   // Set an option after initializing
@@ -92,7 +104,7 @@ window.SwaggerUi = Backbone.Router.extend({
 
   // Event handler for when url/key is received from user
   updateSwaggerUi: function(data){
-    this.options.url = data.url;
+    this.options.url = data.url;    
     this.load();
   },
 
@@ -116,7 +128,7 @@ window.SwaggerUi = Backbone.Router.extend({
     this.options.url = url;
     this.headerView.update(url);
 
-    this.api = new SwaggerClient(this.options);
+    this.api = new SwaggerClient(this.options);    
   },
 
   // collapse all sections

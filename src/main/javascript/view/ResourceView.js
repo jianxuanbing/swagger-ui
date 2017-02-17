@@ -1,7 +1,7 @@
 'use strict';
 
 SwaggerUi.Views.ResourceView = Backbone.View.extend({
-  initialize: function(opts) {
+  initialize: function(opts) {    
     opts = opts || {};
     this.router = opts.router;
     this.auths = opts.auths;
@@ -10,8 +10,13 @@ SwaggerUi.Views.ResourceView = Backbone.View.extend({
     }
     if (this.model.description) {
       this.model.summary = this.model.description;
+    }    
+    if(this.router.api.swaggerObject){      
+      if(this.router.api.swaggerObject.ControllerDesc){        
+        this.model.controllerDesc=this.router.api.swaggerObject.ControllerDesc[this.model.name];
+      }
     }
-    this.number = 0;
+    this.number = 0;    
   },
 
   render: function(){

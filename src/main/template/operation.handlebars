@@ -1,7 +1,7 @@
   <ul class='operations' >
     <li class='{{{escape method}}} operation' id='{{{escape parentId}}}_{{{escape nickname}}}'>
       <div class='heading'>
-        <h3>
+        <h3>          
           <span class='http_method'>
           <a href='#!/{{sanitize encodedParentId}}/{{sanitize nickname}}' class="toggleOperation">{{{escape method}}}</a>
           </span>
@@ -9,7 +9,7 @@
           <a href='#!/{{sanitize encodedParentId}}/{{sanitize nickname}}' class="toggleOperation {{#if deprecated}}deprecated{{/if}}">{{{escape path}}}</a>
           </span>
         </h3>
-        <ul class='options'>
+        <ul class='options'>          
           {{#if showOperationIds}}
           <li>
           <a href='#!/{{sanitize encodedParentId}}/{{sanitize nickname}}' class="toggleOperation"><span class="nickname">{{{escape nickname}}}()</span></a>

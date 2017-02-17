@@ -13,7 +13,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     'change [name=responseContentType]' : 'showSnippet'
   },
 
-  initialize: function(opts) {
+  initialize: function(opts) {    
     opts = opts || {};
     this.router = opts.router;
     this.auths = opts.auths;

@@ -8,7 +8,7 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
     alpha   : function(a,b){ return a.path.localeCompare(b.path); },
     method  : function(a,b){ return a.method.localeCompare(b.method); }
   },
-  initialize: function(opts){
+  initialize: function(opts){    
     var sorterOption, sorterFn, key, value;
     opts = opts || {};
 
@@ -100,6 +100,7 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
       resources[id] = resource;
       this.addResource(resource, this.model.auths);
     }
+    
 
     $('.propWrap').hover(function onHover(){
       $('.optionsWrapper', $(this)).show();
