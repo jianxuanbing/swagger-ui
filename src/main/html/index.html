@@ -41,7 +41,8 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://"+window.location.host+"/sample.json";
+        //url = "http://"+window.location.host+"/sample.json";
+        url = "http://localhost:9460/swagger/docs/Admin";
       }
 
       hljs.configure({
@@ -87,6 +88,7 @@
 
           $(".filter input").on("keypress",function(){
             $("#resources >li > ul.endpoints").show();
+            //$(".options li").show();
           })
         },
         onFailure: function(data) {
@@ -94,9 +96,9 @@
         },
         docExpansion: "none",
         //模块排序
-        apisSorter:"sortWeight",
+        apisSorter:"alpha",
         //模块内部方法排序
-        operationsSorter:"sortWeight",
+        operationsSorter:"method",
         //方法响应排序
         operationResponsesSorter:"sortWeight",
         jsonEditor: false,

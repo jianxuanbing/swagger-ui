@@ -17,12 +17,13 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
     // Sort APIs
     if (opts.swaggerOptions.apisSorter) {
       sorterOption = opts.swaggerOptions.apisSorter;
+      
       if (_.isFunction(sorterOption)) {
         sorterFn = sorterOption;
       } else {
         sorterFn = this.apisSorter[sorterOption];
-      }
-      if (_.isFunction(sorterFn)) {
+      }      
+      if (_.isFunction(sorterFn)) {        
         this.model.apisArray.sort(sorterFn);
       }
     }
