@@ -13,7 +13,7 @@ SwaggerUi.Models.ApiKeyAuthModel = Backbone.Model.extend({
     },
 
     validate: function () {
-        var valid = !!this.get('value');
+        var valid = !!this.get('value');        
 
         this.set('valid', valid);
 

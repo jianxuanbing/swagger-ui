@@ -94,7 +94,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     if (!isMethodSubmissionSupported) {
       this.model.isReadOnly = true;
     }
-    this.model.description = this.model.description || this.model.notes;
+    this.model.description = this.model.description || this.model.notes;    
     this.model.oauth = null;
     modelAuths = this.model.authorizations || this.model.security;
     if (modelAuths) {
@@ -142,7 +142,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
           }
         }
       }
-    }
+    }    
     if (typeof this.model.responses !== 'undefined') {
       this.model.responseMessages = [];
       ref2 = this.model.responses;

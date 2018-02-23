@@ -65,7 +65,7 @@ window.SwaggerUi.utils = {
 
         for (key in scopes) {
             result.push({scope: key, description: scopes[key]});
-        }
+        }        
 
         return result;
     },

@@ -127,6 +127,7 @@ window.SwaggerUi = Backbone.Router.extend({
     }
     this.options.url = url;
     this.headerView.update(url);
+    console.log(this.options);
 
     this.api = new SwaggerClient(this.options);    
   },
@@ -150,7 +151,7 @@ window.SwaggerUi = Backbone.Router.extend({
   //  so it gets called when SwaggerApi completes loading
   render: function(){
     var authsModel;
-    this.showMessage('Finished Loading Resource Information. Rendering Swagger UI...');
+    this.showMessage('Finished Loading Resource Information. Rendering Swagger UI...');    
     this.mainView = new SwaggerUi.Views.MainView({
       model: this.api,
       el: $('#' + this.dom_id),

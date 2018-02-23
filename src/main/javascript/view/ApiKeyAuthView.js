@@ -29,7 +29,9 @@ SwaggerUi.Views.ApiKeyAuthView = Backbone.View.extend({ // TODO: append this to 
             this.$(this.selectors.apikeyInput).removeClass('error');
         }
 
-        this.model.set('value', val);
+        window.swaggerUi.changApiKey(val);
+
+        this.model.set('value', val);        
     },
 
     isValid: function () {

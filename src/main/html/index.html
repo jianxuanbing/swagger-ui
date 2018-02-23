@@ -107,6 +107,15 @@
         showOperationIds: false
       });
 
+      window.swaggerUi.changApiKey=function(value){
+        var key=value;
+        if(key&&key.trim()!=""){
+          var apiKeyAuth=new SwaggerClient.ApiKeyAuthorization("Authorization",key,"header");
+          window.swaggerUi.api.clientAuthorizations.add("api_key",apiKeyAuth);
+          log("added key "+key);
+        }
+      }
+
       function addApiKeyAuthorization(){
         var key=encodeURIComponent($("#input_apiKey")[0].value);
         if(key&&key.trim()!=""){
