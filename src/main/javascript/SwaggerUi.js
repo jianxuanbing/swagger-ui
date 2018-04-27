@@ -126,10 +126,9 @@ window.SwaggerUi = Backbone.Router.extend({
       this.options.authorizations = this.api.clientAuthorizations.authz;
     }
     this.options.url = url;
-    this.headerView.update(url);
-    console.log(this.options);
+    this.headerView.update(url);    
 
-    this.api = new SwaggerClient(this.options);    
+    this.api = new SwaggerClient(this.options);        
   },
 
   // collapse all sections
@@ -151,13 +150,16 @@ window.SwaggerUi = Backbone.Router.extend({
   //  so it gets called when SwaggerApi completes loading
   render: function(){
     var authsModel;
-    this.showMessage('Finished Loading Resource Information. Rendering Swagger UI...');    
+    this.showMessage('Finished Loading Resource Information. Rendering Swagger UI...');
+    
+    console.log(this.api.swaggerObject.muiltVersion);
     this.mainView = new SwaggerUi.Views.MainView({
       model: this.api,
       el: $('#' + this.dom_id),
       swaggerOptions: this.options,
       router: this
     }).render();
+    this.loadVersion(this.api.swaggerObject.muiltVersion);
     if (!_.isEmpty(this.api.securityDefinitions)){
       authsModel = _.map(this.api.securityDefinitions, function (auth, name) {
         var result = {};
@@ -186,6 +188,21 @@ window.SwaggerUi = Backbone.Router.extend({
     }
 
     setTimeout(Docs.shebang.bind(this), 100);
+  },
+
+  loadVersion:function(multVersion){
+    var url=window.location.href;
+    url = url.substring(0, url.indexOf('/', url.indexOf('://',0)+3))+'/';
+    console.log(url);
+    $('body').prepend('<div class="menu-expender" id="menuExpend">←</div><div id="moduleMenu"></div>');
+    var menuInner = '';
+    multVersion.forEach(function (item) {
+        menuInner += '<div data-url="' + url + item.docPath + '" data-module="' + item.version+ '" class="menu-inner" >' + item.title + '</div>';
+    });
+    $('#moduleMenu').append(menuInner);
+    $('#moduleMenu').css("position", "fixed").css("top", "20%");
+    this.expendtoggle();
+    this.menuClick();
   },
 
   buildUrl: function(base, url){
@@ -253,6 +270,22 @@ window.SwaggerUi = Backbone.Router.extend({
 
     $('.propDesc', '.model-signature .description').each(function () {
       $(this).html(marked($(this).html())).addClass('markdown');
+    });
+  },
+  expendtoggle:function(){    
+    $('#menuExpend').toggle(function () {
+        $(this).html('→');
+        $('#moduleMenu').hide();
+    }, function () {
+        $(this).html('←');
+        $('#moduleMenu').show();
+    });
+  },
+  menuClick:function(){
+    $('.menu-inner').on('click',function(){      
+      var url=$(this).data("url");
+      $('#input_baseUrl').val(url);
+      $("#explore").click();
     });
   }
 

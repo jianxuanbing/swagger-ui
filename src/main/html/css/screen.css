@@ -1503,3 +1503,23 @@
   outline-color: #cc0000;
   background-color: #f2dede;
 }
+.menu-inner {
+  background-color: #2392d2;
+  color: whitesmoke;
+  height: 35px;
+  line-height: 35px;
+  border: solid 1px white;
+  font-weight: 600;
+  padding: 0 5px;
+  cursor: pointer;
+}
+.menu-expender {
+  position: fixed;
+  top: 17%;
+  background-color: #89bf04;
+  color: white;
+  font-weight: 600;
+  line-height: 33px;
+  font-size: 25px;
+  cursor: pointer;
+}
