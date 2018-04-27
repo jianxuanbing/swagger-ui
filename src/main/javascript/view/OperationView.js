@@ -21,6 +21,8 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     this.nickname = this.model.nickname;
     this.model.encodedParentId = encodeURIComponent(this.parentId);
 
+    console.log(this)
+
     if (opts.swaggerOptions) {
       this.model.defaultRendering = opts.swaggerOptions.defaultModelRendering;
 
@@ -94,8 +96,15 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     if (!isMethodSubmissionSupported) {
       this.model.isReadOnly = true;
     }
+    
     this.model.description = this.model.description || this.model.notes;    
     this.model.oauth = null;
+    // 加入扩展信息
+    this.model.modifyDate=this.model.operation.modifyDate;
+    this.model.showDevStatus=this.model.operation.showDevStatus;
+    this.model.devStatusName=this.model.operation.devStatusName;
+    this.model.developer=this.model.operation.developer;
+    
     modelAuths = this.model.authorizations || this.model.security;
     if (modelAuths) {
       if (Array.isArray(modelAuths)) {

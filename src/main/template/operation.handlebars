@@ -5,6 +5,11 @@
           <span class='http_method'>
           <a href='#!/{{sanitize encodedParentId}}/{{sanitize nickname}}' class="toggleOperation">{{{escape method}}}</a>
           </span>
+          {{#if showDevStatus}}
+          <span class="dev-status">
+          <a href='#!/{{sanitize encodedParentId}}/{{sanitize nickname}}' class="toggleOperation {{#if deprecated}}deprecated{{/if}}">{{{sanitize devStatusName}}}</a>
+          </span>
+          {{/if}}
           <span class='path'>
           <a href='#!/{{sanitize encodedParentId}}/{{sanitize nickname}}' class="toggleOperation {{#if deprecated}}deprecated{{/if}}">{{{escape path}}}</a>
           </span>
@@ -23,6 +28,14 @@
       <div class='content' id='{{sanitize encodedParentId}}_{{sanitize nickname}}_content' style='display:none'>
         {{#if deprecated}}
             <h4><span data-sw-translate>Warning: Deprecated</span></h4>
+        {{/if}}
+        {{#if developer}}
+        <h4><span data-sw-translate>Developer</span></h4>
+        <div class="markdown">{{{sanitize developer}}}</div>
+        {{/if}}
+        {{#if modifyDate}}
+        <h4><span data-sw-translate>Last Update Time</span></h4>
+        <div class="markdown">{{{sanitize modifyDate}}}</div>
         {{/if}}
         {{#if description}}
         <h4><span data-sw-translate>Implementation Notes</span></h4>

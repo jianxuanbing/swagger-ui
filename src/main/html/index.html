@@ -38,12 +38,13 @@
   <script type="text/javascript">
     $(function () {
       var url = window.location.search.match(/url=([^&]+)/);
-      if (url && url.length > 1) {
-        url = decodeURIComponent(url[1]);
-      } else {
-        //url = "http://"+window.location.host+"/sample.json";
-        url = "http://localhost:9460/swagger/docs/Admin";
-      }      
+      // if (url && url.length > 1) {
+      //   url = decodeURIComponent(url[1]);
+      // } else {
+      //   //url = "http://"+window.location.host+"/sample.json";
+      //   url = "http://localhost:9460/swagger/docs/Admin";
+      // }
+      url="http://localhost:24067/swagger/docs/Admin";
 
       hljs.configure({
         highlightSizeThreshold: 5000
