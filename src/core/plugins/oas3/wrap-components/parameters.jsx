@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Im, { Map } from "immutable"
 import ImPropTypes from "react-immutable-proptypes"
 import { OAS3ComponentWrapFactory } from "../helpers"
+import { FormattedMessage } from "react-intl"
 
 // More readable, just iterate over maps, only
 const eachMap = (iterable, fn) => iterable.valueSeq().filter(Im.Map.isMap).map(fn)
@@ -135,7 +136,7 @@ class Parameters extends Component {
                 <thead>
                   <tr>
                     <th className="col col_header parameters-col_name">Name</th>
-                    <th className="col col_header parameters-col_description">Description</th>
+                    <th className="col col_header parameters-col_description"><FormattedMessage id="Description" defaultMessage="Description" /></th>
                   </tr>
                 </thead>
                 <tbody>

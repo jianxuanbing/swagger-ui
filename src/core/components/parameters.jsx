@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 import Im from "immutable"
+import { FormattedMessage } from "react-intl"
 
 // More readable, just iterate over maps, only
 const eachMap = (iterable, fn) => iterable.valueSeq().filter(Im.Map.isMap).map(fn)
@@ -90,7 +91,7 @@ export default class Parameters extends Component {
               <thead>
                 <tr>
                   <th className="col col_header parameters-col_name">Name</th>
-                  <th className="col col_header parameters-col_description">Description</th>
+                  <th className="col col_header parameters-col_description"><FormattedMessage id="Description" defaultMessage="Description" /></th>
                 </tr>
               </thead>
               <tbody>

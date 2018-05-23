@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
+import { FormattedMessage } from "react-intl"
 
 export default class ModelExample extends React.Component {
   static propTypes = {
@@ -41,10 +42,10 @@ export default class ModelExample extends React.Component {
     return <div>
       <ul className="tab">
         <li className={ "tabitem" + ( isExecute || this.state.activeTab === "example" ? " active" : "") }>
-          <a className="tablinks" data-name="example" onClick={ this.activeTab }>Example Value</a>
+          <FormattedMessage id="ExampleValue" defaultMessage="Example Value" >{(txt)=>(<a className="tablinks" data-name="example" onClick={ this.activeTab }>{txt}</a>)}</FormattedMessage>
         </li>
         { schema ? <li className={ "tabitem" + ( !isExecute && this.state.activeTab === "model" ? " active" : "") }>
-          <a className={ "tablinks" + ( isExecute ? " inactive" : "" )} data-name="model" onClick={ this.activeTab }>Model</a>
+          <FormattedMessage id="Model" defaultMessage="Model" >{(txt)=>(<a className={ "tablinks" + ( isExecute ? " inactive" : "" )} data-name="model" onClick={ this.activeTab }>{txt}</a>)}</FormattedMessage>
         </li> : null }
       </ul>
       <div>

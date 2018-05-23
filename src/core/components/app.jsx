@@ -1,5 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { IntlProvider,addLocaleData} from "react-intl"
+import zh_CN from "../../lang/zh-CN.js"
+import zh from "react-intl/locale-data/zh"
+
+addLocaleData([...zh])
 
 export default class App extends React.Component {
 
@@ -14,7 +19,9 @@ export default class App extends React.Component {
     const Layout = this.getLayout()
 
     return (
-      <Layout/>
+      <IntlProvider locale={"zh"} messages={zh_CN}>
+        <Layout/>
+      </IntlProvider>
     )
   }
 }
